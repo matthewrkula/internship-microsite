@@ -1,3 +1,9 @@
+<% if flash[:error] %>
+	<div class="errors">
+		<%= "Error: #{flash[:error]}" %>
+	</div>
+<% end %>
+
 <%= form_tag '/create' do %>
 	<%= text_field_tag :text %>
 	<%= submit_tag "Submit" %>

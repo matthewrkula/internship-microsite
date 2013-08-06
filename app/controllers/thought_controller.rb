@@ -10,7 +10,8 @@ class ThoughtController < ApplicationController
   		thought.save
   		redirect_to action: :index
   	else
-
+  		flash[:error] = "Invalid entry"
+  		redirect_to action: :new
   	end
 
   end

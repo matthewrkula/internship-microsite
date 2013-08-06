@@ -1,3 +1,86 @@
 // Place all the styles related to the thought controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+$buttercream-yellow: #fdf0b1;
+$buttercream-yellow-dark: #fce780;
+$blue-medium: #88cbfe;
+$blue-dark: #5fb5f7;
+$seafoam-green: #82f0ca;
+$peachy-keen: #fda8a8;
+$plum: #3e0048;
+$orange: #fac657;
+
+.thoughts {
+  width: 100%;
+  height: 100%;
+}
+
+.thought {
+  position: absolute;
+  left: 100px;
+  top: 100px;
+
+  width: 0;
+  height: 0;
+  padding: 20px;
+
+  background: $buttercream-yellow-dark;
+  color: white;
+  font-size: 0.0;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 1px 1px 1px gray;
+  opacity: 0;
+
+  &:nth-child(5n-4){
+    background: $orange;
+  }
+
+  &:nth-child(5n-3) {
+    background: $blue-dark;
+  }
+
+  &:nth-child(5n-2) {
+    background: $peachy-keen;
+  }
+
+  &:nth-child(5n-1) {
+    background: $plum;
+  }
+
+  &.active {
+    z-index: 12;
+    font-size: 1.0em;
+  }
+}
+
+.errors {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+
+  background: #fda8a8;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  box-shadow: 1px 1px 1px gray;
+  border-radius: 3px;
+}
+
+.about {
+  position: absolute;
+  top: 200px;
+  left: -690px;
+
+  display: inline-block;
+  width: 700px;
+
+  background: #fdf0b1;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  padding: 10px 10px 30px 10px;
+  box-shadow: 0px 0px 3px gray;
+  opacity: 0.6;
+  border-radius: 5px;
+  z-index: 150;
+}
