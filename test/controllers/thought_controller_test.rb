@@ -11,4 +11,9 @@ class ThoughtControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  text "should get random" do
+    get :random
+    assert_response :success
+  end
+
 end

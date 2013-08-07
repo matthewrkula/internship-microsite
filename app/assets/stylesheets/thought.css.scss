@@ -12,19 +12,23 @@ $peachy-keen: #fda8a8;
 $plum: #3e0048;
 $orange: #fac657;
 
+$fade-in-time: 1.5s;
+$scale: 1.5;
+
 .thoughts {
-  width: 100%;
+  width: 920px;
   height: 100%;
+  margin: 40px auto;
 }
 
 .thought {
-  position: absolute;
   left: 100px;
   top: 100px;
 
-  width: 0;
-  height: 0;
-  padding: 20px;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
 
   background: $buttercream-yellow-dark;
   color: white;
@@ -32,6 +36,10 @@ $orange: #fac657;
   font-family: 'Montserrat', sans-serif;
   text-shadow: 1px 1px 1px gray;
   opacity: 0;
+
+  -webkit-transition: all $fade-in-time ease-in;
+  -moz-transition: all $fade-in-time ease-in;
+  transition: all $fade-in-time ease-in;
 
   &:nth-child(5n-4){
     background: $orange;
@@ -50,9 +58,18 @@ $orange: #fac657;
   }
 
   &.active {
-    z-index: 12;
-    font-size: 1.0em;
+    -webkit-transform: scale($scale);
+    -moz-transform: scale($scale);
+    transform: scale($scale);
+    opacity: 1;
   }
+
+  &.clicked{
+      -webkit-transform: scale($scale);
+      -moz-transform: scale($scale);
+      transform: scale($scale);
+      opacity: 1;
+  } 
 }
 
 .errors {
@@ -67,15 +84,19 @@ $orange: #fac657;
   border-radius: 3px;
 }
 
-.about {
+.info {
+   -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
   position: absolute;
-  top: 200px;
-  left: -690px;
+  top: 30%;
+  left: 40%;
 
-  display: inline-block;
-  width: 700px;
+  display: none;
+  width: 300px;
 
-  background: #fdf0b1;
+  background: rgb(240, 234, 240);
+  border: 3px solid black;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   padding: 10px 10px 30px 10px;

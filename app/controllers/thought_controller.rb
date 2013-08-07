@@ -1,6 +1,19 @@
 class ThoughtController < ApplicationController
   def index
-  	@thoughts = Thought.all.order('created_at DESC')
+  	@thoughts = Thought.all.order('created_at DESC').limit(30)
+
+    respond_to do |format|
+      format.html
+      format.json {render json: @thoughts}
+    end
+  end
+
+  def random
+    @thoughts = Thought.all.sample(30)
+
+    respond_to do |format|
+      format.json {render json: @thoughts}
+    end
   end
 
   def create

@@ -1,72 +1,53 @@
-# define([
-#   'jquery'
-# ], ($) ->
+define ["jquery"], ($) ->
 
-#   fuckTheActiveDiv = ->
-#     $(".active").animate Animations.fadeToNothing, 300
-#     $(".active").removeClass "active"
-#   becomeNewActiveDiv = (obj) ->
-#     obj.addClass "active"
-#     obj.animate Animations.moveToCenter
-#   fade = ->
-#     obj = $($(".thought")[i])
-#     i = (i + 1) % size
-#     unless obj.hasClass("active")
-      
-#       obj.css
-#         "left": Math.random() * (width - 200)
-#         "top": Math.random() * (height - 200)
+  size = $('.thought').size()
+  unusedThoughts = []
+  infoDiv = $(".info")
 
-#       console.log obj
+  startAnimation = ->
+    thought = $($(".thought")[Math.floor(Math.random() * size)])
+    if !thought.hasClass("active") && thought.css('opacity') < 0.2
+      fadeIn thought
+      setTimeout fadeOut, 1700, thought
 
-#       obj.animate Animations.growSmallToNormal, 3000, "linear", ->
-#         $(this).animate Animations.growNomralToLarge, 1000, "linear", ->
-#           $(this).css
-#             width: 0
-#             height: 0
+  fadeIn = (thought) ->
+    if unusedThoughts.length > 0
+      changeThoughtText thought
+
+    if unusedThoughts.length <= 5
+      getMoreThoughts()
+
+    thought.addClass "active"
+
+  fadeOut = (thought) ->
+    thought.removeClass "active"
+
+  changeThoughtText = (thought) ->
+    thought.text(unusedThoughts.splice(0, 1))
+    
+
+  fadeInInfoBox = (thought) ->
+    infoDiv.fadeIn()
+    infoDiv.css "border", "3px solid " + thought.css("background-color")
+    infoDiv.text thought.text()
+
+  fadeOutInfoBox = ->
+    infoDiv.css('display', 'none')
+
+  getMoreThoughts = ->
+    $.get "/random.json", (data)->
+      for i in [0...data.length]
+        unusedThoughts.push data[i].text
+
+      console.log 'unused ' + unusedThoughts.length
 
 
+  $(".thought").click (e) ->
+    if $(this).css('opacity') > 0
+      fadeInInfoBox $(this)
 
-#   $(".thought").click (e) ->
-#     obj = $(this)
-#     return  if obj.hasClass("active")
-#     obj.stop()
-#     fuckTheActiveDiv()
-#     becomeNewActiveDiv obj
+  infoDiv.click (e) ->
+    fadeOutInfoBox()
 
-#   width = $(window).width()
-#   height = $(window).height()
-#   size = $(".thought").size()
-#   console.log "size:" + size
-#   Animations =
-#     growSmallToNormal:
-#       height: 200
-#       width: 200
-#       opacity: 1
-#       left: "-=50px"
-#       top: "-=50px"
-
-#     growNomralToLarge:
-#       height: 300
-#       width: 300
-#       opacity: 0
-#       left: "-=25px"
-#       top: "-=25px"
-
-#     fadeToNothing:
-#       opacity: 0
-#       height: 0
-#       width: 0
-
-#     moveToCenter:
-#       height: 200
-#       width: 200
-#       opacity: 1
-#       left: (width / 2 - 100) + "px"
-#       top: "200px"
-
-#   i = 0
-#   fade()
-#   setInterval fade, 500
-
-# )
+  getMoreThoughts()
+  setInterval startAnimation, 400
