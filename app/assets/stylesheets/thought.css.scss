@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
+@font-face { font-family: WisdomScript; src: url('/Wisdom Script.otf'); } 
 
 $buttercream-yellow: #fdf0b1;
 $buttercream-yellow-dark: #fce780;
@@ -12,64 +13,134 @@ $peachy-keen: #fda8a8;
 $plum: #3e0048;
 $orange: #fac657;
 
-$fade-in-time: 1.5s;
+$fade-in-time: 3s;
 $scale: 1.5;
 
+.container{
+  width: 1000px;
+  margin: 20px auto;
+  position: relative;
+
+  .about {
+    position: absolute;  
+    display: none; 
+    left: 300px;
+    top: 130px;
+
+    width: 500px;
+    margin: 0 auto;
+    padding: 15px;
+
+    //text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid red;
+    background: #ffffff;
+    box-shadow: 0 0 5px gray;
+    border-radius: 0px;
+  }
+}
+
+header {
+  height: 100px;
+  margin: 0 auto;
+  position: relative;
+
+  border-top: 1px solid red;
+  border-bottom: 1px solid red;
+
+  h1 {
+    position: absolute;
+    left: 120px;
+    top: 0;
+    margin-top: 20px;
+    font-family: WisdomScript, sans-serif;
+    font-size: 2.1em;
+    font-weight: 100;
+  }
+
+  h2 {
+    position: absolute;
+    left: 120px;
+    top: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+  }
+
+  ul {
+    float: right;
+    list-style: none;
+
+    li {
+      float: left;
+      color: red;
+      margin: 18px 0 0 30px;
+
+      a {
+        background: white;
+        border: 1px solid red;
+        color: red;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.1em;
+        padding: 3px;
+        text-decoration: none;
+
+        &:visited { color: red }
+        &:hover { color: red }
+
+        &.active {
+          background: red;
+          color: white;
+        }
+      }
+
+    }
+  }
+
+}
+
 .thoughts {
-  width: 920px;
   height: 100%;
   margin: 40px auto;
+
+  -webkit-transition: opacity 0.3s ease-in;
+  -moz-transition: opacity 0.3s ease-in;
+  transition: opacity 0.3s ease-in;
 }
 
 .thought {
-  left: 100px;
-  top: 100px;
+  left: 80px;
+  top: 110px;
 
   display: inline-block;
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   margin: 10px;
 
   background: $buttercream-yellow-dark;
-  color: white;
   font-size: 0.0;
-  font-family: 'Montserrat', sans-serif;
-  text-shadow: 1px 1px 1px gray;
   opacity: 0;
 
   -webkit-transition: all $fade-in-time ease-in;
   -moz-transition: all $fade-in-time ease-in;
   transition: all $fade-in-time ease-in;
 
-  &:nth-child(5n-4){
-    background: $orange;
-  }
+  &:nth-child(6n-5) { background: $seafoam-green; }
 
-  &:nth-child(5n-3) {
-    background: $blue-dark;
-  }
+  &:nth-child(6n-4) { background: $orange; }
 
-  &:nth-child(5n-2) {
-    background: $peachy-keen;
-  }
+  &:nth-child(6n-3) { background: $blue-dark; }
 
-  &:nth-child(5n-1) {
-    background: $plum;
-  }
+  &:nth-child(6n-2) { background: $peachy-keen; }
+
+  &:nth-child(6n-1) { background: $plum; }
 
   &.active {
-    -webkit-transform: scale($scale);
+    -webkit-transform: scale($scale); // rotateY(180deg);
     -moz-transform: scale($scale);
     transform: scale($scale);
-    opacity: 1;
+    opacity: 0.9;
   }
 
-  &.clicked{
-      -webkit-transform: scale($scale);
-      -moz-transform: scale($scale);
-      transform: scale($scale);
-      opacity: 1;
-  } 
 }
 
 .errors {
@@ -85,23 +156,35 @@ $scale: 1.5;
 }
 
 .info {
-   -webkit-transition: all 0.2s ease-in;
-  -moz-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
   position: absolute;
   top: 30%;
   left: 40%;
 
-  display: none;
   width: 300px;
 
-  background: rgb(240, 234, 240);
+  background: #ffffff;
   border: 3px solid black;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  padding: 10px 10px 30px 10px;
+  padding: 30px 10px 30px 10px;
   box-shadow: 0px 0px 3px gray;
-  opacity: 0.6;
-  border-radius: 5px;
+  opacity: 0;
+  pointer-events: none;
   z-index: 150;
+
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+
+  button {
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    border: none;
+
+    cursor: pointer;
+    background: none;
+    pointer-events: auto;
+  }
 }

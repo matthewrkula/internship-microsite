@@ -1,17 +1,47 @@
-<div class="thoughts">
-  <%= render partial: 'thought', collection: @thoughts %>
+<div class="container">
+  <header>
+    <img src="/assets/logo.png"/>
+
+    <h1>Paper Crane</h1>
+    <h2>Set your thoughts free</h2>
+
+    <ul>
+      <li><a href="#" id="about-link">ABOUT</a></li>
+      <li><a href="#">DOWNLOAD</a></li>
+      <li><a href="#">SOCIAL</a></li>
+    </ul>
+  </header>
+
+  <div class="thoughts">
+    <%= render partial: 'thought', collection: @thoughts %>
+  </div>
+
+  <div class="info">
+    <span>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      lorem
+    </span>
+    <button class="info-close">X</button>
+  </div>
+
+  <div class="about">
+    <h3>About Us</h3>
+    <span class="description">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, maxime, debitis, numquam tenetur eius praesentium sunt qui architecto repudiandae ad sint soluta aliquam sit. Quod, consequuntur numquam est labore quae!
+
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, nisi, optio, sint porro quaerat tempora magnam quo eveniet fugiat incidunt atque quas laboriosam omnis. Fugiat, maxime magnam perspiciatis doloremque sunt.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, illum, totam, nostrum quia dicta officiis labore id quae aliquid voluptate a cumque praesentium animi esse ipsa. Tenetur, fugiat ullam doloribus.
+    </span>
+  </div>
 </div>
 
-<div class="info">
-  <span class="description">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    lorem
-  </span>
-</div>
+<div class="add-one">
+  <form>
 
+  </form>
+</div> 
 <!-- <iframe width="0" height="0" src="//www.youtube.com/embed/YtYMyySUkGo?autoplay=1" frameborder="0" allowfullscreen></iframe> -->
