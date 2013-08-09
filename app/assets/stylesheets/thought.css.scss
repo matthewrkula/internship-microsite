@@ -13,7 +13,7 @@ $peachy-keen: #fda8a8;
 $plum: #3e0048;
 $orange: #fac657;
 
-$fade-in-time: 1.5s;
+$fade-in-time: 4s;
 $scale-time: 1.5;
 
 @mixin transition-prefixes($end){
@@ -39,7 +39,7 @@ $scale-time: 1.5;
   margin: 20px auto;
   position: relative;
 
-  .about {
+  .popup {
     position: absolute;  
     display: none; 
     left: 0;
@@ -48,7 +48,7 @@ $scale-time: 1.5;
 
     width: 500px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 30px;
 
     font-family: 'Montserrat', sans-serif;
     border: 1px solid red;
@@ -58,7 +58,25 @@ $scale-time: 1.5;
 
     h3 {
       margin-top: 0px;
+      color: red;
     }
+
+    &.get-the-app {
+      height: 250px;
+      
+      .google-play {
+        position: absolute;
+        left: 85px;
+        top: 170px;
+      }
+
+      .app-store {
+        position: absolute;
+        left: 275px;
+        top: 195px;
+      }
+    }
+
   }
 }
 
@@ -157,7 +175,7 @@ header {
 
   &:nth-child(6n-1) { background: $plum; }
 
-  &.active {
+  &.visible {
     -webkit-transform: scale($scale-time); // rotateY(180deg);
     -moz-transform: scale($scale-time);
     transform: scale($scale-time);

@@ -7,7 +7,7 @@
 
     <ul>
       <li><a href="#" id="about-link">ABOUT</a></li>
-      <li><a href="#">GET THE APP</a></li>
+      <li><a href="#" id="app-link">GET THE APP</a></li>
       <li><a href="#">SOCIAL</a></li>
     </ul>
   </header>
@@ -21,13 +21,23 @@
     <button class="close-btn">X</button>
   </div>
 
-  <div class="about">
+  <div class="about popup">
     <h3>About Us</h3>
     <span class="description">
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, maxime, debitis, numquam tenetur eius praesentium sunt qui architecto repudiandae ad sint soluta aliquam sit. Quod, consequuntur numquam est labore quae!
 
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, nisi, optio, sint porro quaerat tempora magnam quo eveniet fugiat incidunt atque quas laboriosam omnis. Fugiat, maxime magnam perspiciatis doloremque sunt.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, illum, totam, nostrum quia dicta officiis labore id quae aliquid voluptate a cumque praesentium animi esse ipsa. Tenetur, fugiat ullam doloribus.
     </span>
+    <button class="close-btn">X</button>
+  </div>
+
+  <div class="get-the-app popup">
+    <h3>ABOUT THE THOUGHTFOLD APP</h3>
+    <span class="description">
+      Paper Crane is about clearing your mind and seeing the beauty of everyday life. Whether your thoughts are positive, negative, or anywhere in-between, express yourself and live life in the moment. Enjoy the beauty of our birds and be free.
+    </span>
+    <%= image_tag 'google-play.png', class: 'google-play' %>
+    <%= image_tag 'app-store.png', class: 'app-store' %>
     <button class="close-btn">X</button>
   </div>
 </div>

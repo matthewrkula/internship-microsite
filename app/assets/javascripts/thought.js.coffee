@@ -2,6 +2,7 @@ define ["jquery"], ($) ->
 
   infoDiv = $('.info')            # The div that shows the thought text
   aboutDiv = $('.about')
+  appDiv = $('.get-the-app')
   thoughtDivs = $('.thought')     # The array of the thought divs
   size = $('.thought').size()     # Number of thoughts on the page
   unusedThoughts = []             # Array containing thoughts that we can still use
@@ -9,7 +10,7 @@ define ["jquery"], ($) ->
   # Begins the whole fade in/out process for everything
   startAnimation = ->
     thought = $(thoughtDivs[Math.floor(Math.random() * size)])
-    if !thought.hasClass("active") && thought.css('opacity') < 0.2
+    if !thought.hasClass("visible") && thought.css('opacity') < 0.2
       fadeIn thought
       setTimeout fadeOut, 3000, thought
 
@@ -21,11 +22,10 @@ define ["jquery"], ($) ->
     if unusedThoughts.length <= 5
       getMoreThoughts()
 
-    thought.addClass "active"
+    thought.addClass "visible"
 
   fadeOut = (thought) ->
-    thought.removeClass "active"
-    thought.removeClass "rotate"
+    thought.removeClass "visible"
 
   # Removes the first unused thought and puts it in the specified div
   changeThoughtText = (thought) ->
@@ -49,31 +49,39 @@ define ["jquery"], ($) ->
 
       console.log 'unused ' + unusedThoughts.length
 
-  # Show the About Us div
-  openAboutUs = ->
-    $('#about-link').addClass('active')
+  openPopUp = (link, popup) ->
+    closePopUp()
     closeInfoBox()
-    aboutDiv.fadeIn()
+    link.addClass('active')
+    popup.fadeIn()
 
-  # Hide the About Us div
-  closeAboutUs = ->
-    $('#about-link').removeClass('active')
-    aboutDiv.fadeOut()
+  closePopUp = ->
+    $('.active').removeClass('active')
+    $('.popup').fadeOut()
 
+
+  $('.get-the-app .close-btn').click (e)->
+    closePopUp()
   $('.about .close-btn').click (e)->
-    closeAboutUs()
+    closePopUp()
   $('.info .close-btn').click (e)->
     closeInfoBox()
 
   $('#about-link').click (e)->
     if $(this).hasClass('active')
-      closeAboutUs()
+      closePopUp()
     else
-      openAboutUs()
+      openPopUp($(this), aboutDiv)
+
+  $('#app-link').click (e)->
+    if $(this).hasClass('active')
+      closePopUp()
+    else
+      openPopUp($(this), appDiv)
 
   thoughtDivs.click (e) ->
     if $(this).css('opacity') > 0
-      closeAboutUs()
+      closePopUp()
       openInfoBox $(this)
 
   getMoreThoughts()
