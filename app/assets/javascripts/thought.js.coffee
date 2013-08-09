@@ -1,6 +1,5 @@
 define ["jquery"], ($) ->
 
-  infoBoxIsShowing = false
   infoDiv = $('.info')            # The div that shows the thought text
   aboutDiv = $('.about')
   thoughtDivs = $('.thought')     # The array of the thought divs
@@ -31,18 +30,16 @@ define ["jquery"], ($) ->
   # Removes the first unused thought and puts it in the specified div
   changeThoughtText = (thought) ->
     thought.text(unusedThoughts.splice(0, 1))
-    
-  fadeInInfoBox = (thought) ->
+
+  openInfoBox = (thought) ->
     infoDiv.css "border", "3px solid " + thought.css("background-color")
     infoDiv.css('opacity': '1')
     infoDiv.find('span').text thought.text()
     $('.thoughts').css('opacity': '0.6')
-    infoBoxIsShowing = true
 
-  fadeOutInfoBox = ->
+  closeInfoBox = ->
     infoDiv.css('opacity': '0')
     $('.thoughts').css('opacity': '1')
-    infoBoxIsShowing = false
 
   # Ask the server for some more random thoughts
   getMoreThoughts = ->
@@ -55,7 +52,7 @@ define ["jquery"], ($) ->
   # Show the About Us div
   openAboutUs = ->
     $('#about-link').addClass('active')
-    fadeOutInfoBox()
+    closeInfoBox()
     aboutDiv.fadeIn()
 
   # Hide the About Us div
@@ -63,8 +60,10 @@ define ["jquery"], ($) ->
     $('#about-link').removeClass('active')
     aboutDiv.fadeOut()
 
-  $('.info-close').click (e)->
-    fadeOutInfoBox()
+  $('.about .close-btn').click (e)->
+    closeAboutUs()
+  $('.info .close-btn').click (e)->
+    closeInfoBox()
 
   $('#about-link').click (e)->
     if $(this).hasClass('active')
@@ -75,7 +74,7 @@ define ["jquery"], ($) ->
   thoughtDivs.click (e) ->
     if $(this).css('opacity') > 0
       closeAboutUs()
-      fadeInInfoBox $(this)
+      openInfoBox $(this)
 
   getMoreThoughts()
-  setInterval startAnimation, 20         # Begins the constant looping
+  setInterval startAnimation, 50         # Begins the constant looping

@@ -4,7 +4,7 @@ class ThoughtController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json {render json: @thoughts}
+      format.json {render :json => @thoughts}
     end
   end
 
@@ -12,19 +12,19 @@ class ThoughtController < ApplicationController
     @thoughts = Thought.all.sample(70)
 
     respond_to do |format|
-      format.json {render json: @thoughts}
+      format.json {render :json => @thoughts}
     end
   end
 
   def create
-  	thought = Thought.new(text: params[:text])
+  	thought = Thought.new(:text => params[:text])
 
   	if thought.valid?
   		thought.save
-  		redirect_to action: :index
+  		redirect_to :action => :index
   	else
   		flash[:error] = "Invalid entry"
-  		redirect_to action: :new
+  		redirect_to :action => :new
   	end
 
   end
