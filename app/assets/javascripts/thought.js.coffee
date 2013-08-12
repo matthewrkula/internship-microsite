@@ -10,7 +10,7 @@ define ["jquery"], ($) ->
   # Begins the whole fade in/out process for everything
   startAnimation = ->
     thought = $(thoughtDivs[Math.floor(Math.random() * size)])
-    if !thought.hasClass("visible") && thought.css('opacity') < 0.2
+    if !thought.hasClass("visible") && thought.find('.thought-img').css('opacity') < 0.2
       fadeIn thought
       setTimeout fadeOut, 3000, thought
 
@@ -23,18 +23,24 @@ define ["jquery"], ($) ->
       getMoreThoughts()
 
     thought.addClass "visible"
+    thought.find('.thought-img').addClass "visible"
 
   fadeOut = (thought) ->
     thought.removeClass "visible"
+    thought.find('.thought-img').removeClass "visible"
 
   # Removes the first unused thought and puts it in the specified div
   changeThoughtText = (thought) ->
-    thought.text(unusedThoughts.splice(0, 1))
+    newThought = unusedThoughts.splice(0, 1)[0]
+    thought.find('.thought-text').text(newThought.text)
+    thought.find('.thought-img').attr('src', newThought.link)
+    unusedThoughts.push(newThought)
 
   openInfoBox = (thought) ->
     infoDiv.css "border", "3px solid " + thought.css("background-color")
     infoDiv.css('opacity': '1')
-    infoDiv.find('span').text thought.text()
+    infoDiv.find('span').text thought.find('.thought-text').text()
+    infoDiv.find('.info-img').attr('src', thought.find('.thought-img').attr('src'))
     $('.thoughts').css('opacity': '0.6')
 
   closeInfoBox = ->
@@ -45,9 +51,12 @@ define ["jquery"], ($) ->
   getMoreThoughts = ->
     $.get "/random.json", (data)->
       for i in [0...data.length]
-        unusedThoughts.push data[i].text
+        unusedThoughts.push(
+          text: data[i].text 
+          link: data[i].link
+        )
 
-      console.log 'unused ' + unusedThoughts.length
+      console.log 'unused ' + unusedThoughts[0].link
 
   openPopUp = (link, popup) ->
     closePopUp()
@@ -80,9 +89,9 @@ define ["jquery"], ($) ->
       openPopUp($(this), appDiv)
 
   thoughtDivs.click (e) ->
-    if $(this).css('opacity') > 0
+    if $(this).find('.thought-img').css('opacity') > 0
       closePopUp()
       openInfoBox $(this)
 
   getMoreThoughts()
-  setInterval startAnimation, 50         # Begins the constant looping
+  setInterval startAnimation, 100         # Begins the constant looping

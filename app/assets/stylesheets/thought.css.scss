@@ -13,13 +13,23 @@ $peachy-keen: #fda8a8;
 $plum: #3e0048;
 $orange: #fac657;
 
-$fade-in-time: 4s;
-$scale-time: 1.5;
+$fade-in-time: 2s;
+$scale-size: 1.4;
 
 @mixin transition-prefixes($end){
   -webkit-transition: #{$end}; 
   -moz-transition: #{$end};
   transition: #{$end};
+}
+
+@mixin background-overlay-colors($class, $color){
+  &.#{$class}{
+    background: $color;
+
+    .overlay {
+      background: $color; 
+    }
+  }
 }
 
 .close-btn {
@@ -151,35 +161,49 @@ header {
 }
 
 .thought {
-  left: 80px;
-  top: 110px;
+  position: relative;
+  // left: 80px;
+  // top: 110px;
 
   display: inline-block;
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
   margin: 10px;
 
   background: $buttercream-yellow-dark;
   font-size: 0.0;
-  opacity: 0;
+  overflow: hidden;
+  //opacity: 0;
 
   @include transition-prefixes("all #{$fade-in-time}");
 
-  &:nth-child(6n-5) { background: $seafoam-green; }
+  @include background-overlay-colors("buttercream-yellow", $buttercream-yellow);
+  @include background-overlay-colors("seafoam-green", $seafoam-green);
+  @include background-overlay-colors("orange", $orange);
+  @include background-overlay-colors("blue-dark", $blue-dark);
+  @include background-overlay-colors("peachy-keen", $peachy-keen);
+  @include background-overlay-colors("plum", $plum);
 
-  &:nth-child(6n-4) { background: $orange; }
-
-  &:nth-child(6n-3) { background: $blue-dark; }
-
-  &:nth-child(6n-2) { background: $peachy-keen; }
-
-  &:nth-child(6n-1) { background: $plum; }
 
   &.visible {
-    -webkit-transform: scale($scale-time); // rotateY(180deg);
-    -moz-transform: scale($scale-time);
-    transform: scale($scale-time);
+    -webkit-transform: scale($scale-size); 
+    -moz-transform: scale($scale-size);
+    transform: scale($scale-size);
     opacity: 0.9;
+  }
+
+  .thought-img {
+    @include transition-prefixes("all #{$fade-in-time}");
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    opacity: 0;
+
+    &.visible {
+      opacity: 1;
+    }
   }
 
 }
@@ -198,7 +222,7 @@ header {
 
 .info {
   position: absolute;
-  top: 45%;
+  top: 35%;
   left: 0;
   right: 0;
 
@@ -214,6 +238,12 @@ header {
   opacity: 0;
   pointer-events: none;
   z-index: 150;
+
+  .info-img {
+    width: 300px;
+    margin-top: 10px;
+    border: 1px solid black;
+  }
   
   @include transition-prefixes("all 0.6s");
 }
