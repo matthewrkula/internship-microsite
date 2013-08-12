@@ -1,6 +1,3 @@
-// Place all the styles related to the thought controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 @font-face { font-family: WisdomScript; src: url('/Wisdom Script.otf'); } 
 
@@ -23,13 +20,6 @@ $scale-size: 1.4;
 }
 
 @mixin background-overlay-colors($class, $color){
-  &.#{$class}{
-    background: $color;
-
-    .overlay {
-      background: $color; 
-    }
-  }
 }
 
 .close-btn {
@@ -45,9 +35,10 @@ $scale-size: 1.4;
 }
 
 .container{
-  width: 1000px;
-  margin: 20px auto;
   position: relative;
+
+  width: 950px;
+  margin: 20px auto;
 
   .popup {
     position: absolute;  
@@ -91,9 +82,9 @@ $scale-size: 1.4;
 }
 
 header {
-  margin: 0 auto;
   position: relative;
 
+  margin: 0 auto;
   height: 100px;
   border-top: 1px solid red;
   border-bottom: 1px solid red;
@@ -124,30 +115,38 @@ header {
     list-style: none;
 
     li {
-      float: left;
-      color: red;
       margin: 18px 0 0 30px;
 
-      a {
+      float: left;
+      color: red;
+
+      &:nth-child(4){
+        margin-left: 10px;
+      }
+
+      span {
         border: 1px solid red;
-        padding: 3px;
 
         background: white;
         color: red;
         font-family: 'Montserrat', sans-serif;
         font-size: 1.1em;
-        text-decoration: none;
 
-        &:visited { color: red }
         &:hover {
           background: red;
-          color: white;
         }
 
         &.active {
           background: red;
-          color: white;
         }
+
+        a{
+          padding: 3px;
+          text-decoration: none;
+          &:visited { color: red }
+          &:hover { color: white }
+        }
+
       } // a
     } //li
   } //ul
@@ -162,8 +161,6 @@ header {
 
 .thought {
   position: relative;
-  // left: 80px;
-  // top: 110px;
 
   display: inline-block;
   width: 75px;
@@ -173,36 +170,36 @@ header {
   background: $buttercream-yellow-dark;
   font-size: 0.0;
   overflow: hidden;
-  //opacity: 0;
 
   @include transition-prefixes("all #{$fade-in-time}");
-
-  @include background-overlay-colors("buttercream-yellow", $buttercream-yellow);
-  @include background-overlay-colors("seafoam-green", $seafoam-green);
-  @include background-overlay-colors("orange", $orange);
-  @include background-overlay-colors("blue-dark", $blue-dark);
-  @include background-overlay-colors("peachy-keen", $peachy-keen);
-  @include background-overlay-colors("plum", $plum);
-
 
   &.visible {
     -webkit-transform: scale($scale-size); 
     -moz-transform: scale($scale-size);
     transform: scale($scale-size);
-    opacity: 0.9;
+    opacity: 1;
   }
 
+  &.seafoam-green { background: $seafoam-green; }
+  &.buttercream-yellow { background: $buttercream-yellow; }
+  &.orange { background: $orange; }
+  &.blue-dark { background: $blue-dark; }
+  &.peachy-keen { background: $peachy-keen; }
+  &.plum { background: $plum; }
+
   .thought-img {
-    @include transition-prefixes("all #{$fade-in-time}");
-    height: 100%;
     position: absolute;
     top: 0;
     bottom: 0;
+
+    height: 100%;
     margin: auto 0;
+
+    @include transition-prefixes("all #{$fade-in-time}");
     opacity: 0;
 
     &.visible {
-      opacity: 1;
+      opacity: 0.8;
     }
   }
 
@@ -252,6 +249,7 @@ header {
   .container {
     width: 400px;
     height: 600px;
+
     overflow-y: hidden;
   }
 

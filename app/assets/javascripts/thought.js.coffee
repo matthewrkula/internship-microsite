@@ -17,7 +17,7 @@ define ["jquery"], ($) ->
   # Fades the thought and gives it new text if new text is available
   fadeIn = (thought) ->
     if unusedThoughts.length > 0
-      changeThoughtText thought
+      changeThoughtData thought
 
     if unusedThoughts.length <= 5
       getMoreThoughts()
@@ -30,7 +30,7 @@ define ["jquery"], ($) ->
     thought.find('.thought-img').removeClass "visible"
 
   # Removes the first unused thought and puts it in the specified div
-  changeThoughtText = (thought) ->
+  changeThoughtData = (thought) ->
     newThought = unusedThoughts.splice(0, 1)[0]
     thought.find('.thought-text').text(newThought.text)
     thought.find('.thought-img').attr('src', newThought.link)
@@ -68,22 +68,18 @@ define ["jquery"], ($) ->
     $('.active').removeClass('active')
     $('.popup').fadeOut()
 
-
-  $('.get-the-app .close-btn').click (e)->
+  $('.close-btn').click (e)->
     closePopUp()
-  $('.about .close-btn').click (e)->
-    closePopUp()
-  $('.info .close-btn').click (e)->
     closeInfoBox()
 
   $('#about-link').click (e)->
-    if $(this).hasClass('active')
+    if $(this).closest("span").hasClass('active')
       closePopUp()
     else
       openPopUp($(this), aboutDiv)
 
   $('#app-link').click (e)->
-    if $(this).hasClass('active')
+    if $(this).closest("span").hasClass('active')
       closePopUp()
     else
       openPopUp($(this), appDiv)
@@ -94,4 +90,4 @@ define ["jquery"], ($) ->
       openInfoBox $(this)
 
   getMoreThoughts()
-  setInterval startAnimation, 100         # Begins the constant looping
+  setInterval startAnimation, 200         # Begins the constant looping

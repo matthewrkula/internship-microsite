@@ -1,6 +1,6 @@
 class ThoughtController < ApplicationController
   def index
-  	@thoughts = Thought.all.order('created_at DESC').limit(70)
+  	@thoughts = Thought.all.order('created_at DESC').limit(50)
 
     respond_to do |format|
       format.html
