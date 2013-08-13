@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 @font-face { font-family: WisdomScript; src: url('/Wisdom Script.otf'); } 
+@font-face { font-family: BebasNeue; src: url('/BebasNeue.otf'); }
 
 $buttercream-yellow: #fdf0b1;
 $buttercream-yellow-dark: #fce780;
@@ -19,9 +20,6 @@ $scale-size: 1.4;
   transition: #{$end};
 }
 
-@mixin background-overlay-colors($class, $color){
-}
-
 .close-btn {
   position: absolute;
   right: 0;
@@ -32,6 +30,7 @@ $scale-size: 1.4;
   cursor: pointer;
   background: none;
   pointer-events: auto;
+  color: #d0d0d0;
 }
 
 .container{
@@ -86,18 +85,18 @@ header {
 
   margin: 0 auto;
   height: 100px;
-  border-top: 1px solid red;
-  border-bottom: 1px solid red;
+  border-top: 3px solid red;
+  border-bottom: 3px solid red;
 
   h1 {
     position: absolute;
     left: 120px;
     top: 0;
 
-    margin-top: 20px;
+    margin-top: 10px;
 
-    font-family: WisdomScript, sans-serif;
-    font-size: 2.5em;
+    font-family: BebasNeue, sans-serif;
+    font-size: 2.7em;
     font-weight: 100;
   }
 
@@ -132,12 +131,12 @@ header {
         font-family: 'Montserrat', sans-serif;
         font-size: 1.1em;
 
-        &:hover {
-          background: red;
-        }
+        &:hover { background: red; }
 
         &.active {
           background: red;
+
+          a{ color: white; }
         }
 
         a{
@@ -223,10 +222,9 @@ header {
   left: 0;
   right: 0;
 
-  width: 300px;
+  width: 450px;
   margin: 0 auto;
-  padding: 30px 10px 30px 10px;
-  border: 3px solid black;
+  // border: 3px solid black;
 
   background: #ffffff;
   font-family: 'Montserrat', sans-serif;
@@ -237,12 +235,33 @@ header {
   z-index: 150;
 
   .info-img {
-    width: 300px;
-    margin-top: 10px;
-    border: 1px solid black;
+    width: 100%;
+    vertical-align: sub;
+  }
+
+  .overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+    @include transition-prefixes("all 0.7s");
+    opacity: 0;
+    background: white;
+
+    span {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      color: black;
+      margin: auto 0;
+    }
   }
   
-  @include transition-prefixes("all 0.6s");
+  @include transition-prefixes("opacity 0.6s");
 }
 
 @media (max-width: 480px) {

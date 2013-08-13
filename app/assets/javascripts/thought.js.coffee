@@ -37,14 +37,16 @@ define ["jquery"], ($) ->
     unusedThoughts.push(newThought)
 
   openInfoBox = (thought) ->
-    infoDiv.css "border", "3px solid " + thought.css("background-color")
+    # infoDiv.css "border", "3px solid " + thought.css("background-color")
     infoDiv.css('opacity': '1')
     infoDiv.find('span').text thought.find('.thought-text').text()
     infoDiv.find('.info-img').attr('src', thought.find('.thought-img').attr('src'))
+    infoDiv.find('.overlay').css('pointer-events', 'auto')
     $('.thoughts').css('opacity': '0.6')
 
   closeInfoBox = ->
     infoDiv.css('opacity': '0')
+    infoDiv.find('.overlay').css('pointer-events', 'none')
     $('.thoughts').css('opacity': '1')
 
   # Ask the server for some more random thoughts
@@ -61,12 +63,18 @@ define ["jquery"], ($) ->
   openPopUp = (link, popup) ->
     closePopUp()
     closeInfoBox()
-    link.addClass('active')
+    link.closest('span').addClass('active')
     popup.fadeIn()
 
   closePopUp = ->
     $('.active').removeClass('active')
     $('.popup').fadeOut()
+
+  infoDiv.hover(->
+    $(this).find('.overlay').css('opacity', '0.8')
+  , ->
+    $(this).find('.overlay').css('opacity', '0')
+  )
 
   $('.close-btn').click (e)->
     closePopUp()
