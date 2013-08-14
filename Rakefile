@@ -3,4 +3,8 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+def ruby_rake_task(task)
+  Rake::Task[task].invoke
+end
+
 InternMicrosite::Application.load_tasks
