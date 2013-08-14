@@ -17,33 +17,11 @@
     <%= render partial: 'thought', collection: @thoughts %>
   </div>
 
-  <div class="info">
-    <img class="info-img" src="http://petetheplanner.com/site/wp-content/uploads/2013/04/vacation.jpg"/>
-    <div class="overlay">
-      <span></span>
-    </div>
-    <button class="close-btn">X</button>
-  </div>
+  <%= render partial: 'info' %>
 
-  <div class="about popup">
-    <h3>About Us</h3>
-    <span class="description">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis, maxime, debitis, numquam tenetur eius praesentium sunt qui architecto repudiandae ad sint soluta aliquam sit. Quod, consequuntur numquam est labore quae!
+  <%= render partial: 'about' %>
 
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, nisi, optio, sint porro quaerat tempora magnam quo eveniet fugiat incidunt atque quas laboriosam omnis. Fugiat, maxime magnam perspiciatis doloremque sunt.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, illum, totam, nostrum quia dicta officiis labore id quae aliquid voluptate a cumque praesentium animi esse ipsa. Tenetur, fugiat ullam doloribus.
-    </span>
-    <button class="close-btn">X</button>
-  </div>
-
-  <div class="get-the-app popup">
-    <h3>ABOUT THE THOUGHTFOLD APP</h3>
-    <span class="description">
-      Paper Crane is about clearing your mind and seeing the beauty of everyday life. Whether your thoughts are positive, negative, or anywhere in-between, express yourself and live life in the moment. Enjoy the beauty of our birds and be free.
-    </span>
-    <a href='#'><%= image_tag 'google-play.png', class: 'google-play' %></a>
-    <a href='#'><%= image_tag 'app-store.png', class: 'app-store' %></a>
-    <button class="close-btn">X</button>
-  </div>
+  <%= render partial: 'app' %>
 </div>
 
 <!-- <iframe width="0" height="0" src="//www.youtube.com/embed/YtYMyySUkGo?autoplay=1" frameborder="0" allowfullscreen></iframe> -->

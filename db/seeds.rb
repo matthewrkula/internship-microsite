@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 urls = [
 	"http://unioncitytm.files.wordpress.com/2011/07/best-price-vacation.jpg",
 	"http://www.1stwebdesigner.com/wp-content/uploads/2009/04/apophysis/Abalone_inspiration.jpg",
@@ -26,3 +18,7 @@ urls = [
 		text: "This is thought number #{i}. This is so embarassing", 
 		link: urls[rand(urls.length)]})
 end
+
+#Thought.create({
+#	text: "Thought text goes here",
+#})

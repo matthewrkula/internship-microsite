@@ -1,8 +1,17 @@
 define ["jquery"], ($) ->
 
+  craneMap = {
+    "rgb(253, 240, 177)":"/assets/yellow-crane.png",
+    "rgb(130, 240, 202)":"/assets/green-crane.png",
+    "rgb(250, 198, 87)":"/assets/orange-crane.png",
+    "rgb(95, 181, 247)":"/assets/blue-crane.png",
+    "rgb(253, 168, 168)":"/assets/pink-crane.png",
+    "rgb(62, 0, 72)":"/assets/purple-crane.png"
+  }
+
   infoDiv = $('.info')            # The div that shows the thought text
-  aboutDiv = $('.about')
-  appDiv = $('.get-the-app')
+  aboutDiv = $('.about')          # The div that shows the about text
+  appDiv = $('.get-the-app')      # The div that contains the links to the app stores
   thoughtDivs = $('.thought')     # The array of the thought divs
   size = $('.thought').size()     # Number of thoughts on the page
   unusedThoughts = []             # Array containing thoughts that we can still use
@@ -37,11 +46,11 @@ define ["jquery"], ($) ->
     unusedThoughts.push(newThought)
 
   openInfoBox = (thought) ->
-    # infoDiv.css "border", "3px solid " + thought.css("background-color")
     infoDiv.css('opacity': '1')
     infoDiv.find('span').text thought.find('.thought-text').text()
     infoDiv.find('.info-img').attr('src', thought.find('.thought-img').attr('src'))
     infoDiv.find('.overlay').css('pointer-events', 'auto')
+    infoDiv.find('.info-crane').attr('src', craneMap[thought.css('background-color')])
     $('.thoughts').css('opacity': '0.6')
 
   closeInfoBox = ->
@@ -57,7 +66,6 @@ define ["jquery"], ($) ->
           text: data[i].text 
           link: data[i].link
         )
-
       console.log 'unused ' + unusedThoughts[0].link
 
   openPopUp = (link, popup) ->
@@ -70,10 +78,20 @@ define ["jquery"], ($) ->
     $('.active').removeClass('active')
     $('.popup').fadeOut()
 
+  # Show and hide the text/overlay
   infoDiv.hover(->
-    $(this).find('.overlay').css('opacity', '0.8')
+    $(this).find('.overlay').css('opacity', '0.85')
   , ->
     $(this).find('.overlay').css('opacity', '0')
+  )
+
+  # Fade in on mouseover thoughts
+  thoughtDivs.hover(->
+    $(this).addClass "visible"
+    $(this).find('.thought-img').addClass "visible"
+  , ->
+    $(this).removeClass "visible"
+    $(this).find('.thought-img').removeClass "visible"
   )
 
   $('.close-btn').click (e)->

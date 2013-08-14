@@ -1,5 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
-@font-face { font-family: WisdomScript; src: url('/Wisdom Script.otf'); } 
+@font-face { font-family: OxygenRegular; src: url('/oxygenregular.otf'); } 
 @font-face { font-family: BebasNeue; src: url('/BebasNeue.otf'); }
 
 $buttercream-yellow: #fdf0b1;
@@ -31,12 +30,16 @@ $scale-size: 1.4;
   background: none;
   pointer-events: auto;
   color: #d0d0d0;
+
+  &:hover {
+    color: #b0b0b0;
+  }
 }
 
 .container{
   position: relative;
 
-  width: 950px;
+  max-width: 950px;
   margin: 20px auto;
 
   .popup {
@@ -50,7 +53,7 @@ $scale-size: 1.4;
     margin: 0 auto;
     padding: 30px;
 
-    font-family: 'Montserrat', sans-serif;
+    font-family: OxygenRegular, sans-serif;
     border: 1px solid red;
     background: #ffffff;
     box-shadow: 0 0 5px gray;
@@ -105,7 +108,7 @@ header {
     left: 120px;
     top: 50px;
 
-    font-family: 'Montserrat', sans-serif;
+    font-family: OxygenRegular, sans-serif;
     font-size: 14px;
   }
 
@@ -114,7 +117,7 @@ header {
     list-style: none;
 
     li {
-      margin: 18px 0 0 30px;
+      margin: 18px 0 0 20px;
 
       float: left;
       color: red;
@@ -123,12 +126,16 @@ header {
         margin-left: 10px;
       }
 
+      img {
+        margin-top: -2px;
+      }
+
       span {
         border: 1px solid red;
 
         background: white;
         color: red;
-        font-family: 'Montserrat', sans-serif;
+        font-family: BebasNeue, sans-serif;
         font-size: 1.1em;
 
         &:hover { background: red; }
@@ -141,6 +148,7 @@ header {
 
         a{
           padding: 3px;
+
           text-decoration: none;
           &:visited { color: red }
           &:hover { color: white }
@@ -179,6 +187,16 @@ header {
     opacity: 1;
   }
 
+  &:hover{
+    transition-property: scale;
+    transition-duration: 0.1s;
+
+    .thought-img {
+      transition-property: opacity;
+      transition-duration: 0.1s;
+    }
+  }
+
   &.seafoam-green { background: $seafoam-green; }
   &.buttercream-yellow { background: $buttercream-yellow; }
   &.orange { background: $orange; }
@@ -198,10 +216,9 @@ header {
     opacity: 0;
 
     &.visible {
-      opacity: 0.8;
+      opacity: 0.65;
     }
   }
-
 }
 
 .errors {
@@ -211,7 +228,7 @@ header {
 
   background: #fda8a8;
   color: black;
-  font-family: 'Montserrat', sans-serif;
+  font-family: OxygenRegular, sans-serif;
   box-shadow: 1px 1px 1px gray;
   border-radius: 3px;
 }
@@ -224,15 +241,14 @@ header {
 
   width: 450px;
   margin: 0 auto;
-  // border: 3px solid black;
 
   background: #ffffff;
-  font-family: 'Montserrat', sans-serif;
   text-align: center;
   box-shadow: 0px 0px 3px gray;
   opacity: 0;
   pointer-events: none;
   z-index: 150;
+  @include transition-prefixes("opacity 0.6s");
 
   .info-img {
     width: 100%;
@@ -248,20 +264,34 @@ header {
     height: 100%;
 
     pointer-events: none;
-    @include transition-prefixes("all 0.7s");
+    @include transition-prefixes("all 0.5s");
     opacity: 0;
     background: white;
 
     span {
       position: absolute;
-      top: 0;
-      bottom: 0;
+      top: 70px;
+      left: 0;
+      right: 0;
+
+      margin: 0 auto;
+
       color: black;
-      margin: auto 0;
+      font-family: OxygenRegular, sans-serif;
     }
+
+    .info-crane {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 40px;
+
+      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+    }
+
   }
-  
-  @include transition-prefixes("opacity 0.6s");
 }
 
 @media (max-width: 480px) {
