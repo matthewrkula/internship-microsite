@@ -19,6 +19,11 @@ urls = [
 		link: urls[rand(urls.length)]})
 end
 
-#Thought.create({
-#	text: "Thought text goes here",
-#})
+# colors = "blue, green, orange, pink, purple, yellow"
+
+# Thought.create({
+# text: "First one!!!",
+# 	link: "/assets/LARGE-IMG-NAME.jpg",
+# 	small_link: "/assets/SMALL-IMG-NAME.jpg",
+# 	color: "COLOR"
+# })

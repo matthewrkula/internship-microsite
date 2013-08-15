@@ -115,6 +115,7 @@ header {
   ul {
     float: right;
     list-style: none;
+    color: red;
 
     li {
       margin: 18px 0 0 20px;
@@ -148,6 +149,7 @@ header {
 
         a{
           padding: 3px;
+          color: red;
 
           text-decoration: none;
           &:visited { color: red }
