@@ -11,7 +11,7 @@ $plum: #3e0048;
 $orange: #fac657;
 
 $fade-in-time: 2s;
-$scale-size: 1.4;
+$scale-size: 1.1;
 
 @mixin transition-prefixes($end){
   -webkit-transition: #{$end}; 
@@ -79,7 +79,6 @@ $scale-size: 1.4;
         top: 195px;
       }
     }
-
   }
 }
 
@@ -172,9 +171,10 @@ header {
   position: relative;
 
   display: inline-block;
-  width: 75px;
-  height: 75px;
-  margin: 10px;
+  width: 80px;
+  height: 80px;
+  margin: 5px;
+  margin-bottom: -5px;
 
   background: $buttercream-yellow-dark;
   font-size: 0.0;
@@ -193,18 +193,22 @@ header {
     transition-property: scale;
     transition-duration: 0.1s;
 
-    .thought-img {
+    // -webkit-transform: scale(3);
+    // transform: scale(3);
+    // z-index: 999;
+   .thought-img {
       transition-property: opacity;
       transition-duration: 0.1s;
+      opacity: 1 !important;
     }
   }
 
-  &.seafoam-green { background: $seafoam-green; }
-  &.buttercream-yellow { background: $buttercream-yellow; }
+  &.green { background: $seafoam-green; }
+  &.yellow { background: $buttercream-yellow; }
   &.orange { background: $orange; }
-  &.blue-dark { background: $blue-dark; }
-  &.peachy-keen { background: $peachy-keen; }
-  &.plum { background: $plum; }
+  &.blue { background: $blue-dark; }
+  &.pink { background: $peachy-keen; }
+  &.purple { background: $plum; }
 
   .thought-img {
     position: absolute;
@@ -243,6 +247,7 @@ header {
 
   width: 450px;
   margin: 0 auto;
+  // border: 25px solid red;
 
   background: #ffffff;
   text-align: center;

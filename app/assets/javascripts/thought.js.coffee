@@ -9,6 +9,8 @@ define ["jquery"], ($) ->
     "rgb(62, 0, 72)":"/assets/purple-crane.png"
   }
 
+  console.log(jQuery)
+  # console.log ($('body').flex)
   infoDiv = $('.info')            # The div that shows the thought text
   aboutDiv = $('.about')          # The div that shows the about text
   appDiv = $('.get-the-app')      # The div that contains the links to the app stores
@@ -66,7 +68,6 @@ define ["jquery"], ($) ->
           text: data[i].text 
           link: data[i].link
         )
-      console.log 'unused ' + unusedThoughts[0].link
 
   openPopUp = (link, popup) ->
     closePopUp()

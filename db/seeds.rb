@@ -13,13 +13,16 @@ urls = [
 	"http://media-cdn.tripadvisor.com/media/photo-s/01/bd/96/f5/bald-mountain.jpg"
 ]
 
+colors = %w"blue green orange pink purple yellow"
+
 100.times do |i|
 	Thought.create({
-		text: "This is thought number #{i}. This is so embarassing", 
-		link: urls[rand(urls.length)]})
+		text: "This is thought number #{i}. This is so embarassing",
+		link: urls[rand(urls.length)],
+		color: colors[rand(colors.length)]
+	})
 end
 
-# colors = "blue, green, orange, pink, purple, yellow"
 
 # Thought.create({
 # text: "First one!!!",
