@@ -1,4 +1,4 @@
-define ["jquery"], ($) ->
+define ["jquery", "jquery.flex.min"], ($) ->
 
   craneMap = {
     "rgb(253, 240, 177)":"/assets/yellow-crane.png",
@@ -9,8 +9,6 @@ define ["jquery"], ($) ->
     "rgb(62, 0, 72)":"/assets/purple-crane.png"
   }
 
-  console.log(jQuery)
-  # console.log ($('body').flex)
   infoDiv = $('.info')            # The div that shows the thought text
   aboutDiv = $('.about')          # The div that shows the about text
   appDiv = $('.get-the-app')      # The div that contains the links to the app stores

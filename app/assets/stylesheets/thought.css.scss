@@ -39,7 +39,7 @@ $scale-size: 1.1;
 .container{
   position: relative;
 
-  max-width: 950px;
+  max-width: 1000px;
   margin: 20px auto;
 
   .popup {
@@ -196,6 +196,10 @@ header {
     // -webkit-transform: scale(3);
     // transform: scale(3);
     // z-index: 999;
+
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+
    .thought-img {
       transition-property: opacity;
       transition-duration: 0.1s;
