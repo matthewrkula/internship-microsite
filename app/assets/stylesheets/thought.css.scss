@@ -29,7 +29,7 @@ $scale-size: 1.1;
   cursor: pointer;
   background: none;
   pointer-events: auto;
-  color: #d0d0d0;
+  color: red;
 
   &:hover {
     color: #b0b0b0;
@@ -126,7 +126,7 @@ header {
       float: left;
       color: red;
 
-      &:nth-child(4){
+      &:nth-child(5){
         margin-left: 10px;
       }
 
@@ -167,10 +167,10 @@ header {
 .thoughts {
   height: 760px;
   margin: 0 auto 40px auto;
-  background: url('/test-bg.jpg'); 
+  // background: url('/test-bg.jpg'); 
   position: relative;
 
-  @include transition-prefixes("opacity 0.3s ease-in");
+  @include transition-prefixes("opacity 0.8s ease-in");
 }
 
 .thought {
@@ -179,8 +179,8 @@ header {
   display: inline-block;
 
   @include transition-prefixes("all 2.0s");
-  -webkit-transform-origin: 125px 50px;
-  transform-origin: 125px 50px;
+  -webkit-transform-origin: 125px 53px;
+  transform-origin: 125px 53px;
 
   &:hover{
     @include transition-prefixes("all 1.3s");
@@ -195,47 +195,40 @@ header {
   }
 
   &:nth-child(1){
-    left: 100px;
-    top: 37px;
+    left: 40px;
+    top: 83px;
   }
 
   &:nth-child(2){
-    left: 300px;
-    top: 45px;
+    left: 240px;
+    top: 95px;
   }
   &:nth-child(3){
-    left: 500px;
-    top: 45px;
+    left: 440px;
+    top: 97px;
   }
   &:nth-child(4){
-    left: 700px;
-    top: 35px;
+    left: 650px;
+    top: 90px;
   }
   &:nth-child(5){
-    left: 900px;
-    top: 15px;
+    left: 850px;
+    top: 73px;
   }
 
   .crane{
     position: relative;
     
     &::before{
-        position: absolute;
-        content: "";
-        background:white;
-        width: 3px;
-        height: 90px;
-        left: 130px;
-        bottom: 175px;
+      position: absolute;
+      content: "";
+      background: #d2d4cc;
+      width: 3px;
+      height: 90px;
+      left: 130px;
+      bottom: 175px;
     }
-}
-
-  // &.green { background: $seafoam-green; }
-  // &.yellow { background: $buttercream-yellow; }
-  // &.orange { background: $orange; }
-  // &.blue { background: $blue-dark; }
-  // &.pink { background: $peachy-keen; }
-  // &.purple { background: $plum; }
+  }
 
 }
 
@@ -257,7 +250,7 @@ header {
   left: 0;
   right: 0;
 
-  width: 450px;
+  width: 300px;
   border: 3px solid red;
 
   background: #ffffff;
@@ -291,6 +284,8 @@ header {
       color: black;
       font-family: OxygenRegular, sans-serif;
       opacity: 1;
+      margin-left: 10px;
+      margin-right: 10px;
     }
   }
 

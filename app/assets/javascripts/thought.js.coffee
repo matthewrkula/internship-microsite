@@ -7,25 +7,51 @@ define ["jquery", "jquery.flex.min"], ($) ->
   size = $('.thought').size()     # Number of thoughts on the page
   unusedThoughts = []             # Array containing thoughts that we can still use
 
+  reset = ->
+    $('.thoughts').css('opacity', 0) 
+    closeInfoBox()
 
-  # Removes the first unused thought and puts it in the specified div
+    setTimeout( ->
+      $.each thoughtDivs, (index, thought) ->
+        changeThoughtData(thought)
+      switchBackground()
+    , 800)
+
+    setTimeout( -> 
+      $('.thoughts').css('opacity', 1)
+    , 1000)
+
+
   changeThoughtData = (thought) ->
     newThought = unusedThoughts.splice(0, 1)[0]
+
+    if unusedThoughts.length < 10
+      getMoreThoughts()
+
+    thought = $(thought)
     thought.data('text', newThought.text)
     thought.data('image', newThought.link)
+    thought.find('.thought-img').attr('src', "/assets/#{newThought.color}.png")
     unusedThoughts.push(newThought)
+
+  switchBackground = ->
+    bg = ["flowers", "cliffs", "forest", "harbor"][Math.floor(Math.random()*4)]
+    $('.thoughts').css('background', "url(/assets/backgrounds/#{bg}.jpg)")
 
   openInfoBox = (thought) ->
     infoDiv.css(
       'opacity': '1'
       'top': thought.position().top + thought.height() + 100
-      'left': thought.position().left - (infoDiv.width() / 5)
+      'left': thought.position().left
     )
     infoDiv.find('span').text thought.data('text')
     infoDiv.find('.info-img').attr('src', thought.data('image'))
 
   closeInfoBox = ->
     infoDiv.css('opacity': '0')
+
+  infoBoxIsOpen = ->
+    return infoDiv.css('opacity') > 0
 
   # Ask the server for some more random thoughts
   getMoreThoughts = ->
@@ -46,15 +72,6 @@ define ["jquery", "jquery.flex.min"], ($) ->
   closePopUp = ->
     $('.active').removeClass('active')
     $('.popup').fadeOut()
-
-  # Fade in on mouseover thoughts
-  thoughtDivs.hover(->
-    $(this).addClass "visible"
-    $(this).find('.thought-img').addClass "visible"
-  , ->
-    $(this).removeClass "visible"
-    $(this).find('.thought-img').removeClass "visible"
-  )
 
   $('.close-btn').click (e)->
     closePopUp()
@@ -98,8 +115,11 @@ define ["jquery", "jquery.flex.min"], ($) ->
   startBlowing()
   setInterval startBlowing, 800
 
-  # bg = ["cherry_blossom", "cliffs", "forest", "harbor"][Math.floor(Math.random()*4)]
-  # $('.thoughts').css('background', "url(/assets/backgrounds/#{bg}.jpg)")
+  setInterval(->
+    unless infoBoxIsOpen()
+      reset()
+  , 10000)
 
-  # getMoreThoughts()
+  getMoreThoughts()
+  switchBackground()
   # setInterval startAnimation, 200         # Begins the constant looping
