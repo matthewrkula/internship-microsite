@@ -134,6 +134,8 @@ DEPENDENCIES
   requirejs-rails!
   sass-rails (~> 4.0.0)
   sdoc
+  sprockets
+  sprockets-rails
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)
