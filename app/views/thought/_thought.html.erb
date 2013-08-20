@@ -5,7 +5,8 @@
 	data-color="<%= thought.color %>">
 
 	<span class="crane">
-		<%= image_tag "#{thought.color}.png", class: "thought-img" %>
+		<% Rails.logger.warn(asset_path("#{thought.color}.png")) %>
+		<%= image_tag asset_path("#{thought.color}.png"), class: "thought-img" %>
 	</span>
 	
 </div>
