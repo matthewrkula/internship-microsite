@@ -1,7 +1,11 @@
 <% classes = ["yellow", "green", "orange", "blue", "pink", "purple"] %>
-<div class="thought <%= thought.color %>">
-	<span class="thought-text">
-		<%= thought.text %>
+<div class="thought <%= thought.color %>" 
+	data-image="<%= thought.link %>" 
+	data-text="<%= thought.text %>"
+	data-color="<%= thought.color %>">
+
+	<span class="crane">
+		<%= image_tag "#{thought.color}.png", class: "thought-img" %>
 	</span>
-	<%= image_tag thought.link, class: "thought-img" %>
+	
 </div>

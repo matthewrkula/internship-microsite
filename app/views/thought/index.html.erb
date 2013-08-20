@@ -3,7 +3,7 @@
     <img src="/assets/logo.png"/>
 
     <h1>Thoughtfold</h1>
-    <h2>Set your thoughts free</h2>
+    <h2>Clear your mind</h2>
 
     <ul>
       <li><span><a href="#" id="about-link">ABOUT</a></span></li>
@@ -14,8 +14,10 @@
   </header>
 
   <div class="thoughts">
-    <%= render partial: 'thought', collection: @thoughts %>
+    <%= render(partial: 'thought', collection: @thoughts, locales: { points: [[100, 100], [200, 200]] }) %>
+
   </div>
+
 
   <%= render partial: 'info' %>
 
@@ -24,4 +26,3 @@
   <%= render partial: 'app' %>
 </div>
 
-<!-- <iframe width="0" height="0" src="//www.youtube.com/embed/YtYMyySUkGo?autoplay=1" frameborder="0" allowfullscreen></iframe> -->

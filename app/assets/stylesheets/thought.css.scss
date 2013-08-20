@@ -10,7 +10,7 @@ $peachy-keen: #fda8a8;
 $plum: #3e0048;
 $orange: #fac657;
 
-$fade-in-time: 2s;
+$fade-in-time: 0.5s;
 $scale-size: 1.1;
 
 @mixin transition-prefixes($end){
@@ -39,7 +39,7 @@ $scale-size: 1.1;
 .container{
   position: relative;
 
-  max-width: 1000px;
+  max-width: 1140px;
   margin: 20px auto;
 
   .popup {
@@ -87,8 +87,12 @@ header {
 
   margin: 0 auto;
   height: 100px;
-  border-top: 3px solid red;
-  border-bottom: 3px solid red;
+
+  box-shadow: 0 5px 3px -2px gray;
+  z-index: 999;
+  // border-top: 5px solid red;
+  // border-bottom: 5px solid red;
+
 
   h1 {
     position: absolute;
@@ -161,74 +165,78 @@ header {
 } //header
 
 .thoughts {
-  height: 100%;
-  margin: 40px auto;
+  height: 760px;
+  margin: 0 auto 40px auto;
+  background: url('/test-bg.jpg'); 
+  position: relative;
 
   @include transition-prefixes("opacity 0.3s ease-in");
 }
 
 .thought {
-  position: relative;
+  position: absolute;
 
   display: inline-block;
-  width: 80px;
-  height: 80px;
-  margin: 5px;
-  margin-bottom: -5px;
 
-  background: $buttercream-yellow-dark;
-  font-size: 0.0;
-  overflow: hidden;
-
-  @include transition-prefixes("all #{$fade-in-time}");
-
-  &.visible {
-    -webkit-transform: scale($scale-size); 
-    -moz-transform: scale($scale-size);
-    transform: scale($scale-size);
-    opacity: 1;
-  }
+  @include transition-prefixes("all 2.0s");
+  -webkit-transform-origin: 125px 50px;
+  transform-origin: 125px 50px;
 
   &:hover{
-    transition-property: scale;
-    transition-duration: 0.1s;
-
-    // -webkit-transform: scale(3);
-    // transform: scale(3);
-    // z-index: 999;
-
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-
-   .thought-img {
-      transition-property: opacity;
-      transition-duration: 0.1s;
-      opacity: 1 !important;
-    }
+    @include transition-prefixes("all 1.3s");
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg);
   }
 
-  &.green { background: $seafoam-green; }
-  &.yellow { background: $buttercream-yellow; }
-  &.orange { background: $orange; }
-  &.blue { background: $blue-dark; }
-  &.pink { background: $peachy-keen; }
-  &.purple { background: $plum; }
-
-  .thought-img {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-
-    height: 100%;
-    margin: auto 0;
-
-    @include transition-prefixes("all #{$fade-in-time}");
-    opacity: 0;
-
-    &.visible {
-      opacity: 0.65;
-    }
+  &.blowing{
+    @include transition-prefixes("all 1.3s");
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg);
   }
+
+  &:nth-child(1){
+    left: 100px;
+    top: 37px;
+  }
+
+  &:nth-child(2){
+    left: 300px;
+    top: 45px;
+  }
+  &:nth-child(3){
+    left: 500px;
+    top: 45px;
+  }
+  &:nth-child(4){
+    left: 700px;
+    top: 35px;
+  }
+  &:nth-child(5){
+    left: 900px;
+    top: 15px;
+  }
+
+  .crane{
+    position: relative;
+    
+    &::before{
+        position: absolute;
+        content: "";
+        background:white;
+        width: 3px;
+        height: 90px;
+        left: 130px;
+        bottom: 175px;
+    }
+}
+
+  // &.green { background: $seafoam-green; }
+  // &.yellow { background: $buttercream-yellow; }
+  // &.orange { background: $orange; }
+  // &.blue { background: $blue-dark; }
+  // &.pink { background: $peachy-keen; }
+  // &.purple { background: $plum; }
+
 }
 
 .errors {
@@ -250,8 +258,7 @@ header {
   right: 0;
 
   width: 450px;
-  margin: 0 auto;
-  // border: 25px solid red;
+  border: 3px solid red;
 
   background: #ffffff;
   text-align: center;
@@ -259,7 +266,7 @@ header {
   opacity: 0;
   pointer-events: none;
   z-index: 150;
-  @include transition-prefixes("opacity 0.6s");
+  @include transition-prefixes("all 0.6s");
 
   .info-img {
     width: 100%;
@@ -268,40 +275,37 @@ header {
 
   .overlay{
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
 
     width: 100%;
-    height: 100%;
+    height: auto;
+    padding: 8px 0;
 
     pointer-events: none;
     @include transition-prefixes("all 0.5s");
-    opacity: 0;
     background: white;
+    opacity: 0.6;
 
     span {
-      position: absolute;
-      top: 70px;
-      left: 0;
-      right: 0;
-
-      margin: 0 auto;
-
       color: black;
       font-family: OxygenRegular, sans-serif;
+      opacity: 1;
     }
+  }
 
-    .info-crane {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 40px;
+  .arrow {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
 
-      margin: 0 auto;
-      width: 100px;
-      height: 100px;
-    }
-
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 30px solid red;
   }
 }
 
