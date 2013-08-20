@@ -19,6 +19,18 @@ $scale-size: 1.1;
   transition: #{$end};
 }
 
+@mixin blow(){
+  @include transition-prefixes("all 1.3s");
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+
+    .thought-img{
+      @include transition-prefixes("all 1.3s");
+      -webkit-transform: rotate(16deg);
+      transform: rotate(16deg);
+    }
+}
+
 .close-btn {
   position: absolute;
   right: 0;
@@ -90,6 +102,7 @@ header {
 
   box-shadow: 0 5px 3px -2px gray;
   z-index: 999;
+  color: #4a4d51;
   // border-top: 5px solid red;
   // border-bottom: 5px solid red;
 
@@ -104,6 +117,8 @@ header {
     font-family: BebasNeue, sans-serif;
     font-size: 2.7em;
     font-weight: 100;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 2px #99ccff;
   }
 
   h2 {
@@ -122,6 +137,7 @@ header {
 
     li {
       margin: 18px 0 0 20px;
+      letter-spacing: 2px;
 
       float: left;
       color: red;
@@ -132,10 +148,13 @@ header {
 
       img {
         margin-top: -2px;
+        height: 23px;
+        border: 1px solid red;
       }
 
       span {
-        border: 1px solid red;
+        border: 2px solid red;
+        padding: 0 2px;
 
         background: white;
         color: red;
@@ -183,15 +202,11 @@ header {
   transform-origin: 125px 53px;
 
   &:hover{
-    @include transition-prefixes("all 1.3s");
-    -webkit-transform: rotate(-20deg);
-    transform: rotate(-20deg);
+   @include blow(); 
   }
 
   &.blowing{
-    @include transition-prefixes("all 1.3s");
-    -webkit-transform: rotate(-20deg);
-    transform: rotate(-20deg);
+    @include blow();
   }
 
   &:nth-child(1){
@@ -218,7 +233,7 @@ header {
 
   .crane{
     position: relative;
-    
+
     &::before{
       position: absolute;
       content: "";
@@ -228,8 +243,12 @@ header {
       left: 130px;
       bottom: 175px;
     }
-  }
 
+   
+  }
+  .thought-img {
+    @include transition-prefixes("all 2.0s");
+  }
 }
 
 .errors {

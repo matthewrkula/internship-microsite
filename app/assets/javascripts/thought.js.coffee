@@ -7,6 +7,7 @@ define ["jquery", "jquery.flex.min"], ($) ->
   size = $('.thought').size()     # Number of thoughts on the page
   unusedThoughts = []             # Array containing thoughts that we can still use
 
+
   reset = ->
     $('.thoughts').css('opacity', 0) 
     closeInfoBox()
@@ -35,7 +36,7 @@ define ["jquery", "jquery.flex.min"], ($) ->
     unusedThoughts.push(newThought)
 
   switchBackground = ->
-    bg = ["flowers", "cliffs", "forest", "harbor"][Math.floor(Math.random()*4)]
+    bg = ["flowers", "cliffs", "forest", "harbor", "ireland", "patagonia", "sunset"][Math.floor(Math.random()*7)]
     $('.thoughts').css('background', "url(/assets/backgrounds/#{bg}.jpg)")
 
   openInfoBox = (thought) ->
@@ -122,4 +123,17 @@ define ["jquery", "jquery.flex.min"], ($) ->
 
   getMoreThoughts()
   switchBackground()
+
+
+  $('.facebook').hover(->
+    $(this).attr('src', '/assets/facebook-hover.png')
+  , ->
+    $(this).attr('src', '/assets/facebook.png')
+  )
+
+  $('.twitter').hover(->
+    $(this).attr('src', '/assets/twitter-hover.png')
+  , ->
+    $(this).attr('src', '/assets/twitter.png')
+  )
   # setInterval startAnimation, 200         # Begins the constant looping
