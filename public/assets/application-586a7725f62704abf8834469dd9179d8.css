@@ -1,0 +1,271 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+@font-face {
+  font-family: OxygenRegular;
+  src: url("/oxygenregular.otf"); }
+
+@font-face {
+  font-family: BebasNeue;
+  src: url("/BebasNeue.otf"); }
+
+.close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+  pointer-events: auto;
+  color: red; }
+  .close-btn:hover {
+    color: #b0b0b0; }
+
+.container {
+  position: relative;
+  max-width: 1140px;
+  margin: 20px auto; }
+  .container .popup {
+    position: absolute;
+    display: none;
+    left: 0;
+    right: 0;
+    top: 130px;
+    width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    font-family: OxygenRegular, sans-serif;
+    border: 1px solid red;
+    background: #ffffff;
+    box-shadow: 0 0 5px gray;
+    border-radius: 0px; }
+    .container .popup h3 {
+      margin-top: 0px;
+      color: red; }
+    .container .popup.get-the-app {
+      height: 250px; }
+      .container .popup.get-the-app .google-play {
+        position: absolute;
+        left: 85px;
+        top: 170px; }
+      .container .popup.get-the-app .app-store {
+        position: absolute;
+        left: 275px;
+        top: 195px; }
+
+header {
+  position: relative;
+  margin: 0 auto;
+  height: 100px;
+  box-shadow: 0 5px 3px -2px gray;
+  z-index: 999;
+  color: #4a4d51; }
+  header h1 {
+    position: absolute;
+    left: 120px;
+    top: 0;
+    margin-top: 10px;
+    font-family: BebasNeue, sans-serif;
+    font-size: 2.7em;
+    font-weight: 100;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 2px #99ccff; }
+  header h2 {
+    position: absolute;
+    left: 120px;
+    top: 50px;
+    font-family: OxygenRegular, sans-serif;
+    font-size: 14px; }
+  header ul {
+    float: right;
+    list-style: none;
+    color: red; }
+    header ul li {
+      margin: 18px 0 0 20px;
+      letter-spacing: 2px;
+      float: left;
+      color: red; }
+      header ul li:nth-child(5) {
+        margin-left: 10px; }
+      header ul li img {
+        margin-top: -2px;
+        height: 23px;
+        border: 1px solid red; }
+      header ul li span {
+        border: 2px solid red;
+        padding: 0 2px;
+        background: white;
+        color: red;
+        font-family: BebasNeue, sans-serif;
+        font-size: 1.1em; }
+        header ul li span:hover {
+          background: red; }
+        header ul li span.active {
+          background: red; }
+          header ul li span.active a {
+            color: white; }
+        header ul li span a {
+          padding: 3px;
+          color: red;
+          text-decoration: none; }
+          header ul li span a:visited {
+            color: red; }
+          header ul li span a:hover {
+            color: white; }
+
+.thoughts {
+  height: 760px;
+  margin: 0 auto 40px auto;
+  position: relative;
+  -webkit-transition: opacity 0.8s ease-in;
+  -moz-transition: opacity 0.8s ease-in;
+  transition: opacity 0.8s ease-in; }
+
+.thought {
+  position: absolute;
+  display: inline-block;
+  -webkit-transition: all 2.0s;
+  -moz-transition: all 2.0s;
+  transition: all 2.0s;
+  -webkit-transform-origin: 125px 53px;
+  transform-origin: 125px 53px; }
+  .thought:hover {
+    -webkit-transition: all 1.3s;
+    -moz-transition: all 1.3s;
+    transition: all 1.3s;
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg); }
+    .thought:hover .thought-img {
+      -webkit-transition: all 1.3s;
+      -moz-transition: all 1.3s;
+      transition: all 1.3s;
+      -webkit-transform: rotate(16deg);
+      transform: rotate(16deg); }
+  .thought.blowing {
+    -webkit-transition: all 1.3s;
+    -moz-transition: all 1.3s;
+    transition: all 1.3s;
+    -webkit-transform: rotate(-20deg);
+    transform: rotate(-20deg); }
+    .thought.blowing .thought-img {
+      -webkit-transition: all 1.3s;
+      -moz-transition: all 1.3s;
+      transition: all 1.3s;
+      -webkit-transform: rotate(16deg);
+      transform: rotate(16deg); }
+  .thought:nth-child(1) {
+    left: 40px;
+    top: 83px; }
+  .thought:nth-child(2) {
+    left: 240px;
+    top: 95px; }
+  .thought:nth-child(3) {
+    left: 440px;
+    top: 97px; }
+  .thought:nth-child(4) {
+    left: 650px;
+    top: 90px; }
+  .thought:nth-child(5) {
+    left: 850px;
+    top: 73px; }
+  .thought .crane {
+    position: relative; }
+    .thought .crane::before {
+      position: absolute;
+      content: "";
+      background: #d2d4cc;
+      width: 3px;
+      height: 90px;
+      left: 130px;
+      bottom: 175px; }
+  .thought .thought-img {
+    -webkit-transition: all 2.0s;
+    -moz-transition: all 2.0s;
+    transition: all 2.0s; }
+
+.errors {
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  background: #fda8a8;
+  color: black;
+  font-family: OxygenRegular, sans-serif;
+  box-shadow: 1px 1px 1px gray;
+  border-radius: 3px; }
+
+.info {
+  position: absolute;
+  top: 35%;
+  left: 0;
+  right: 0;
+  width: 300px;
+  border: 3px solid red;
+  background: #ffffff;
+  text-align: center;
+  box-shadow: 0px 0px 3px gray;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 150;
+  -webkit-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  transition: all 0.6s; }
+  .info .info-img {
+    width: 100%;
+    vertical-align: sub; }
+  .info .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    padding: 8px 0;
+    pointer-events: none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    background: white;
+    opacity: 0.6; }
+    .info .overlay span {
+      color: black;
+      font-family: OxygenRegular, sans-serif;
+      opacity: 1;
+      margin-left: 10px;
+      margin-right: 10px; }
+  .info .arrow {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 30px solid red; }
+
+@media (max-width: 480px) {
+  .container {
+    width: 400px;
+    height: 600px;
+    overflow-y: hidden; }
+
+  .info {
+    top: 240px; }
+
+  header ul {
+    text-align: right;
+    margin-top: 0px; }
+    header ul li {
+      margin-top: 15px;
+      float: none;
+      font-size: 0.7em; } }
