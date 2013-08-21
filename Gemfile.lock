@@ -1,10 +1,3 @@
-GIT
-  remote: https://github.com/andyjeffries/requirejs-rails.git
-  revision: c1a572917b04fdc01f14ba3a9cf8639245520a98
-  specs:
-    requirejs-rails (0.9.1)
-      railties (>= 3.1.1, < 4.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -131,7 +124,6 @@ DEPENDENCIES
   protected_attributes
   rails (= 4.0.0)
   rails_12factor
-  requirejs-rails!
   sass-rails (~> 4.0.0)
   sdoc
   sprockets

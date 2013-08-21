@@ -1,5 +1,7 @@
-require([
-  'thought'
-], function($){
+// require([
+//   'thought'
+// ], function($){
 
-});
+// });
+
+console.log("piles of awesome");

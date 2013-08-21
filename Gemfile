@@ -38,7 +38,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'protected_attributes'
-gem 'requirejs-rails' , :git => 'https://github.com/andyjeffries/requirejs-rails.git'
+# gem 'requirejs-rails' , :git => 'https://github.com/andyjeffries/requirejs-rails.git'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
