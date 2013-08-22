@@ -7,7 +7,8 @@ $(document).ready ->
   unusedThoughts = []             # Array containing thoughts that we can still use
   bgs = <%= %w"flowers cliffs forest harbor ireland patagonia sunset".map { |x| image_path("backgrounds/" + x+".jpg") }.to_json %>
 
-  console.log bgs
+  cranes = <%= a = %w"blue green orange pink purple yellow".inject({}) { |map, x| map[x] = image_path("#{x}.png"); map }.to_json %>
+
 
   reset = ->
     $('.thoughts').css('opacity', 0) 
@@ -33,7 +34,7 @@ $(document).ready ->
     thought = $(thought)
     thought.data('text', newThought.text)
     thought.data('image', newThought.link)
-    # thought.find('.thought-img').attr('src', "/assets/#{newThought.color}.png")
+    thought.find('.thought-img').attr('src', cranes[newThought.color])
     unusedThoughts.push(newThought)
 
   switchBackground = ->
