@@ -52,6 +52,8 @@ eos
 
 words = a.split("\n")
 
+Rails.logger.warn(words.length)
+
 words.each do |word|
    Thought.create({
    		text: word,
