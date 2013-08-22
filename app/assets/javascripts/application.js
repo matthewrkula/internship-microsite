@@ -1,7 +1,4 @@
-// require([
-//   'thought'
-// ], function($){
-
-// });
-
-console.log("piles of awesome");
+//= require jquery
+//= require jquery_ujs
+//= require turbolinks
+//= require_tree .
