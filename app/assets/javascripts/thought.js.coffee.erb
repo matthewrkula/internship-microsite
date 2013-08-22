@@ -42,7 +42,6 @@ $(document).ready ->
     $('.thoughts').css('background', "url(#{bg})")
 
   openInfoBox = (thought) ->
-    console.log "opening" + thought
     infoDiv.css(
       'opacity': '1'
       'top': thought.position().top + thought.height() + 100
@@ -98,7 +97,6 @@ $(document).ready ->
   $('a').click((e)-> e.preventDefault())
 
   thoughtDivs.click (e) ->
-    console.log 'asdf'
     closePopUp()
     openInfoBox $(this)
 
