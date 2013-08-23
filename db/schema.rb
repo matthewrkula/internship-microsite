@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815152538) do
+ActiveRecord::Schema.define(version: 20130823195913) do
 
   create_table "thoughts", force: true do |t|
     t.string   "text"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20130815152538) do
     t.datetime "updated_at"
     t.string   "link"
     t.string   "color"
-    t.string   "small_link"
   end
 
 end

@@ -46,13 +46,3 @@ words.each do |word|
 		color: colors[rand(colors.length)]
    	}) 
 end
-
-
-# 100.times do |i|
-# 	Thought.create({
-# 		text: "This is thought number #{i}. This is so embarassing",
-# 		link: urls[rand(urls.length)],
-# 		color: colors[rand(colors.length)]
-# 	})
-# end
-
