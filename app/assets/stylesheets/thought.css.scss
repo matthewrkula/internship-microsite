@@ -10,9 +10,6 @@ $peachy-keen: #fda8a8;
 $plum: #3e0048;
 $orange: #fac657;
 
-$fade-in-time: 0.5s;
-$scale-size: 1.1;
-
 @mixin transition-prefixes($end){
   -webkit-transition: #{$end}; 
   -moz-transition: #{$end};
@@ -78,7 +75,7 @@ $scale-size: 1.1;
 
     &.get-the-app {
       height: 250px;
-      
+
       .google-play {
         position: absolute;
         left: 85px;
@@ -103,9 +100,6 @@ header {
   box-shadow: 0 5px 3px -2px gray;
   z-index: 999;
   color: #4a4d51;
-  // border-top: 5px solid red;
-  // border-bottom: 5px solid red;
-
 
   h1 {
     position: absolute;
@@ -324,30 +318,3 @@ header {
     border-bottom: 30px solid red;
   }
 }
-
-@media (max-width: 480px) {
-  .container {
-    width: 400px;
-    height: 600px;
-
-    overflow-y: hidden;
-  }
-
-  .info {
-    top: 240px;
-  }
-
-  header {
-    ul {
-      text-align: right; 
-      margin-top: 0px;
-      li {
-        margin-top: 15px;
-
-        float: none;
-        font-size: 0.7em;
-      }
-    }
-  }
-}
-
